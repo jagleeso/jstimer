@@ -2,7 +2,7 @@
 
 NPM=npm
 NPM_OPTS=
-NPM_ROOT=javascript
+NPM_ROOT=.
 NPM_MODULES_ROOT=$(NPM_ROOT)/node_modules
 NPM_DEPENDS=npm_depends.txt
 NPM_MODULES=$(shell cat $(NPM_DEPENDS))
