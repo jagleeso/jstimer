@@ -10,7 +10,6 @@ NPM_ROOT=.
 NPM_MODULES_ROOT=$(NPM_ROOT)/node_modules
 NPM_DEPENDS=buster requirejs
 NPM_MODULES=$(addprefix $(NPM_MODULES_ROOT)/,$(NPM_DEPENDS)) # e.g. node_modules/buster
-NPM_DUMMY=$(NPM_MODULES_ROOT)/.dummy
 
 #
 # JS definitions
@@ -53,9 +52,9 @@ define wget_js_rule
 $(call wget_rule,$(1),$(JS_EXT)/$(shell basename $(1)))
 endef
 
-
-$(eval $(call wget_rule,http://requirejs.org/docs/release/2.0.6/comments/require.js,scripts/ext/require.js))
-$(eval $(call wget_rule,http://code.jquery.com/jquery-1.8.2.js,scripts/ext/jquery-1.8.2.js))
+$(eval $(call wget_js_rule,http://requirejs.org/docs/release/2.0.6/comments/require.js))
+$(eval $(call wget_js_rule,http://code.jquery.com/jquery-1.8.2.js))
 
 $(JS_EXT)/jquery.js: $(JS_EXT)/jquery-1.8.2.js
-	ln -s $< $@
+	cd $(dir $<); \
+		ln -s -T $(shell basename $<) $(shell basename $@)
