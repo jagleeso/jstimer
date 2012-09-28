@@ -31,11 +31,6 @@ $(NPM_MODULES_ROOT)/%:
 	cd $(NPM_ROOT); \
 		$(NPM) install $(NPM_OPTS) $*
 
-
-# $(eval $(call wget_rule,test,scripts/ext/require.js))
-
-# $(eval $(call wget_rule,test,scripts/ext/jquery-1.8.2.js))
-
 #
 # JS targets 
 #
