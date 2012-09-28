@@ -39,17 +39,17 @@
 <script type="text/javascript" src="javascript/jquery.js"></script>
 <script type="text/javascript" src="javascript/timer.js"></script>
 <script type="text/javascript">
-var timer = new Timer('time');
+var t = new timer.Timer('time');
 update_timer_button();
 
 $("#timer_button").click(function () {
-    timer.toggle_timer();
+    t.toggle_timer();
     update_timer_button();
 });
 
 function update_timer_button() {
     $("#timer_button").html(
-        timer.started ? 
+        t.started ? 
         "Stop" : 
         "Start"
     );
