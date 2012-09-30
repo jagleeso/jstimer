@@ -1,6 +1,8 @@
+define(function() {
+
 /*  The timer namespace/module.
  */
-var timer = timer || {}; // add to the timer namespace if it already exists
+var timer = {};
 
 /* A Timer takes the id of html tag, and when the timer is started it will replace the 
  * contents of that tag with a hour:minute:second timestring every 100 miliseconds.
@@ -64,3 +66,7 @@ timer.Timer.prototype.timer_string = function(mili) {
             zero_fill(seconds, 2)
            ); 
 }
+
+return timer;
+
+});
