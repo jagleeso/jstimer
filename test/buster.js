@@ -4,10 +4,11 @@ config["My tests"] = {
     rootPath: "../",
     environment: "node", // or "browser"
     sources: [
-        "javascript/timer.js",
-        "javascript/jquery.js"
+        "scripts/timer.js",
+        "scripts/lib/jquery.js"
     ],
     tests: [
         "test/*-test.js"
-    ]
+    ],
+    extensions: [require("buster-amd")]
 }
