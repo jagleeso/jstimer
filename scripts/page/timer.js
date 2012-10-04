@@ -1,5 +1,5 @@
 requirejs(['jquery', 'timer'], function($, timer) {
-    var t = new timer.Timer('time');
+    var t = new timer.HTMLTimer('time');
     update_timer_button();
 
     $("#timer_button").click(function () {
