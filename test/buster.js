@@ -6,14 +6,14 @@ config["My tests"] = {
     // Failed requiring ./js/buster/load-all.js
     environment: "browser",
     sources: [
-        "scripts/timer.js"
+        "scripts/*.js",
     ],
     tests: [
         "test/*-test.js"
     ],
     libs: [
         // load the config.js file before requirejs so we define the global require variable
-        "scripts/config.js",
+        "scripts/conf/require.js",
         "scripts/lib/require.js",
         "scripts/lib/jquery-1.8.2.js"
     ],

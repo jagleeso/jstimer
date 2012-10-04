@@ -6,6 +6,7 @@ var require = {
     // Add paths for lib modules (e.g. jquery)
     paths: {
         timer: 'scripts/timer',
+        klass: 'scripts/klass',
         jquery: 'scripts/lib/jquery-1.8.2',
     }
 };
