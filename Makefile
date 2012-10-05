@@ -8,7 +8,7 @@ NPM=npm
 NPM_OPTS=
 NPM_ROOT=.
 NPM_MODULES_ROOT=$(NPM_ROOT)/node_modules
-NPM_DEPENDS=buster buster-amd requirejs
+NPM_DEPENDS=buster buster-amd buster-html-doc requirejs  
 NPM_MODULES=$(addprefix $(NPM_MODULES_ROOT)/,$(NPM_DEPENDS)) # e.g. node_modules/buster
 
 #

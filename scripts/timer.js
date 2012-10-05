@@ -73,7 +73,6 @@ timer.HTMLTimer = function(timer_id) {
         document.getElementById(that.timer_id).innerHTML = timer_str;
     }
     timer.Timer.call(this, set_time);
-    console.log("hey mah I'ma " + timer_id);
 }
 
 klass.extend(timer.Timer, timer.HTMLTimer);

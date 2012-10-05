@@ -1,4 +1,6 @@
-define(['timer'], function (timer) {
+var refute = buster.assertions.refute;
+
+define(['timer', 'jquery'], function (timer, $) {
     buster.testCase("timer module", {
         "exists": function () {
             assert(timer);
@@ -36,10 +38,50 @@ define(['timer'], function (timer) {
                 },
             },
         },
-        "HTMLTimer inherits Timer": function() {
-            var t = new timer.HTMLTimer('poop');
-            assert(t instanceof timer.HTMLTimer);
-            assert(t instanceof timer.Timer);
+        "DOM exists": function() {
+            assert(document);
+        },
+        "HTMLTimer": {
+            setUp: function() {
+                /*:DOC +=
+                 * <div id='time'></div>
+                 */
+                this.t = new timer.HTMLTimer('time');
+                this.timediv = $('#time')[0];
+                this.assertTime = function(timestring) { 
+                    assert.match(this.timediv, { innerHTML: timestring });
+                };
+                this.assertTimeFormat = function(timestring) {
+                    assert.match(timestring, /\d+:\d{2}:\d{2}/);
+                };
+            },
+            "DOM is setup properly": function() {
+                assert.match(this.timediv, { tagName: 'div' });
+            },
+            "inherits timer.Timer": function() {
+                assert(this.t instanceof timer.Timer);
+            },
+            "is a timer.HTMLTimer": function() {
+                assert(this.t instanceof timer.HTMLTimer);
+            },
+            "starts with 0 timestring": function () {
+                this.assertTime("00:00:00");
+            },
+            "is non-zero timestring after" : {
+                setUp: function() {
+                    this.timeout = 5*1000;
+                },
+                "3 seconds": function (done) {
+                    this.t.toggle_timer();
+                    var that = this;
+                    setTimeout(function() {
+                        that.t.toggle_timer();
+                        that.assertTimeFormat(that.timediv.innerHTML);
+                        refute.match(that.timediv.innerHTML, "00:00:00");
+                        done();
+                    }, 3*1000);
+                },
+            },
         },
     });
 });

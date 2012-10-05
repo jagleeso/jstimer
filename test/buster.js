@@ -17,5 +17,5 @@ config["My tests"] = {
         "scripts/lib/require.js",
         "scripts/lib/jquery-1.8.2.js"
     ],
-    extensions: [require("buster-amd")]
+    extensions: [require("buster-amd"), require("buster-html-doc")],
 }
